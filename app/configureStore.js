@@ -6,18 +6,27 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
+import logger from 'redux-log-diff';
+
 import createReducer from './reducers';
+
 
 const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore(initialState = {}, history) {
-  // Create the store with two middlewares
+  // Create the store with three middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
-  const middlewares = [
+  // 3. redux-log-diff. For me.
+  let middlewares = [
     sagaMiddleware,
     routerMiddleware(history),
   ];
+
+  if (process.env.NODE_ENV !== 'production')
+  {
+    middlewares = [...middlewares, logger];
+  }
 
   const enhancers = [
     applyMiddleware(...middlewares),

@@ -84,6 +84,7 @@
   "eslintConfig": {
     "parser": "babel-eslint",
     "extends": "airbnb",
+
     "env": {
       "browser": true,
       "node": true,
@@ -103,6 +104,7 @@
       }
     },
     "rules": {
+      "brace-style": ["warn", "allman"],
       "arrow-parens": [
         "error",
         "always"
@@ -215,7 +217,7 @@
     "babel-polyfill": "6.23.0",
     "chalk": "1.1.3",
     "compression": "1.6.2",
-    "cross-env": "5.0.0",
+    "cross-env": "^5.1.4",
     "express": "4.15.3",
     "fontfaceobserver": "2.0.9",
     "history": "4.6.3",
@@ -237,6 +239,7 @@
     "react-router-redux": "5.0.0-alpha.6",
     "redux": "3.6.0",
     "redux-immutable": "4.0.0",
+    "redux-log-diff": "^1.0.4",
     "redux-saga": "0.15.3",
     "reselect": "3.0.1",
     "sanitize.css": "4.1.0",
